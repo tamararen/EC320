@@ -17,8 +17,8 @@ class: inverse, middle
 
 ```{r, include = F}
 
+#pagedown::chrome_print("03-Statistics_Review.html",output="03-Statistics_Review.pdf")
 
-to_pdf("03-Statistics_Review.RMD")
 options(htmltools.dir.version = FALSE)
 
 library(pacman)
