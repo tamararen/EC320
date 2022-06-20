@@ -35,21 +35,17 @@ e) Find the variance of the random variable X in (4) using the equation $\sigma_
 
 
 
-
-
-
-
 3. Prove if Y=V+W, var(Y) = var(V) + var(W) + 2cov(V,W)
 
 
 
+4. Suppose a variable Y is an exact linear function of X: Y = a + bX, where *a* and *b* are constants. Suppose Z is a third variable. Show that $\rho_{xz} = \rho_{yz}$
 
 
 
 
 
-
-4. Consider data gathered on adult domestic cats' body weight and heart weight: 
+5. Consider data gathered on adult domestic cats' body weight and heart weight: 
 
 ```{r, echo=FALSE}
 
@@ -63,3 +59,10 @@ a) What is the sample mean of Body Weight
 b) What is the sample variance of Heart Weight
 c) What is the sample correlation coefficient between Body Weight and Heart Weight 
 
+6. Suppose a random variable X is assumed to have a normal distribution with a variance of 4. It is hypothesized that the unknown mean is equal to 10. Given a sample of 25 observations, suppose that we wish to determine the acceptance and rejection regions for $\bar{X}$ under $H_o: \mu =10$ using (a) a 5 percent significance test and (b) using a 1 percent test. 
+
+7. A certain city abolishes its local sales tax on consumer expenditure. A survey of 20 households show that, in the following month, mean household expenditure increased by 160 and the standard error of the increase was 60. 
+
+a) Did abolishing have a significant effect on household expenditure? Use a 2 sided t-test at the 5 percent and 1 percent level. 
+
+b) Construct the 95% confidence interval and the 99% confidence interval 
