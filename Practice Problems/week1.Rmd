@@ -1,0 +1,65 @@
+---
+title: "Week 1 Worksheet"
+author: "Tami Ren"
+date: "6/19/2022"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+1. A random variable X is defined to be the difference between the higher values and the lower value when two dice are thrown. If they have the same value, X is defined to be zero. 
+
+a) Find the probability distribution for X 
+
+b) Find the expected value of X 
+
+c) Calculate $E(X^2)$
+
+d) Calculate the population variance and the standard deviation of X
+
+e) Find the variance of the random variable X in (4) using the equation $\sigma_x^2 = E(X^2) - \mu_x^2$. Does it equal your answer from part (d)? 
+
+
+
+
+
+
+2. Prove that if Y=b, where b is a constant, COV(X,Y) = 0
+
+
+
+
+
+
+
+
+
+3. Prove if Y=V+W, var(Y) = var(V) + var(W) + 2cov(V,W)
+
+
+
+
+
+
+
+
+
+4. Consider data gathered on adult domestic cats' body weight and heart weight: 
+
+```{r, echo=FALSE}
+
+cat = c(1:5)
+body_weight = c(2,2.2,2.4,2.4,3.6)
+heart_weight = c(6.5,7.6,9.1,7.3,11.8)
+
+cbind(cat,body_weight,heart_weight)
+```
+a) What is the sample mean of Body Weight 
+b) What is the sample variance of Heart Weight
+c) What is the sample correlation coefficient between Body Weight and Heart Weight 
+
