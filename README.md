@@ -18,7 +18,7 @@ The HTML versions of the lecture slides allow you to view animations and interac
 3. **Statistics Review II** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/03-Statistics_Review/03-Statistics_Review.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/03-Statistics_Review/03-Statistics_Review.pdf)
 
 4. **The Fundamental Problem of Econometrics** <br> 
-[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/04-Fundamental_Econometric_Problem/04-Fundamental_Econometric_Problem.html) | 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/04-Fundamental_Econometric_Problem/04-Fundamental_Econometric_Problem.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/04-Fundamental_Econometric_Problem/04-Fundamental_Econometric_Problem.pdf)
 
 ### Week 2 
 5. **Regression Logic** <br> 
