@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Statistics Review II</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Tami Ren" />
+    <script src="03-Statistics_Review_files/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Statistics Review II
+]
+.subtitle[
+## EC 320: Introduction to Econometrics
+]
+.author[
+### Tami Ren
+]
+.date[
+### Summer 2022
+]
+
+---
+
+class: inverse, middle
+
+
+
+
+---
+class: inverse, middle
+
+# Statistics Review
+
+---
+# Overview
+
+__Goal:__ Learn about a population.
+
+- In particular, learn about an unknown population _parameter_.
+
+__Challenge:__ Usually cannot access information about the entire population.
+
+__Solution:__ Sample from the population and estimate the parameter.
+
+- Draw `\(n\)` observations from the population, then use an estimator.
+
+---
+# Sampling
+
+There are myriad ways to produce a sample,&lt;sup&gt;*&lt;/sup&gt; but we will restrict our attention to __simple random sampling__, where
+
+1. Each observation is a random variable.
+
+2. The `\(n\)` random variables are independent.
+
+3. Life becomes much simpler for the econometrician.
+
+.footnote[
+&lt;sup&gt;*&lt;/sup&gt; Only a subset of these can help produce reliable statistics.
+]
+
+---
+# Estimators
+
+An __estimator__ is a rule (or formula) for estimating an unknown population parameter given a sample of data.
+
+--
+
+- Each observation in the sample is a random variable.
+
+--
+
+- An estimator is a combination of random variables `\(\implies\)` it is a random variable.
+
+__Example:__ Sample mean
+
+$$
+\bar{X} = \dfrac{1}{n} \sum_{i=1}^n X_i
+$$
+
+- `\(\bar{X}\)` is an estimator for the population mean `\(\mu\)`.
+
+- Given a sample, `\(\bar{X}\)` yields an __estimate__ `\(\bar{x}\)` or `\(\hat{\mu}\)`, a specific number.
+
+---
+# Population *vs.* Sample
+
+**Question:** Why do we care about *population vs. sample*?
+
+
+
+.pull-left[
+
+&lt;img src="03-Statistics_Review_files/figure-html/pop1-1.png" style="display: block; margin: auto;" /&gt;
+
+.center[**Population**]
+
+]
+
+--
+
+.pull-right[
+
+&lt;img src="03-Statistics_Review_files/figure-html/mean1-1.png" style="display: block; margin: auto;" /&gt;
+
+.center[**Population relationship**]
+`\(\mu = 3.75\)`
+
+]
+
+---
+# Population *vs.* Sample
+
+**Question:** Why do we care about *population vs. sample*?
+
+.pull-left[
+
+&lt;img src="03-Statistics_Review_files/figure-html/sample1-1.png" style="display: block; margin: auto;" /&gt;
+
+.center[**Sample 1:** 10 random individuals]
+
+]
+
+--
+
+.pull-right[
+
+&lt;img src="03-Statistics_Review_files/figure-html/sample1 mean-1.png" style="display: block; margin: auto;" /&gt;
+
+.center[
+
+**Population relationship** - `\(\mu = 3.75\)`
+
+**Sample relationship** - `\(\hat{\mu} = 8.34\)`
+
+]
+
+]
+
+---
+# Population *vs.* Sample
+
+**Question:** Why do we care about *population vs. sample*?
+
+.pull-left[
+
+&lt;img src="03-Statistics_Review_files/figure-html/sample2-1.png" style="display: block; margin: auto;" /&gt;
+
+.center[**Sample 2:** 10 random individuals]
+
+]
+
+--
+
+.pull-right[
+
+&lt;img src="03-Statistics_Review_files/figure-html/sample2 mean-1.png" style="display: block; margin: auto;" /&gt;
+
+.center[
+
+**Population relationship** - `\(\mu = 3.75\)`
+
+**Sample relationship**- `\(\hat{\mu} = -8.54\)`
+
+]
+
+]
+
+---
+# Population *vs.* Sample
+
+**Question:** Why do we care about *population vs. sample*?
+
+.pull-left[
+
+&lt;img src="03-Statistics_Review_files/figure-html/sample3-1.png" style="display: block; margin: auto;" /&gt;
+
+.center[**Sample 3:** 10 random individuals]
+
+]
+
+--
+
+.pull-right[
+
+&lt;img src="03-Statistics_Review_files/figure-html/sample3 mean-1.png" style="display: block; margin: auto;" /&gt;
+
+.center[
+
+**Population relationship** - `\(\mu = 3.75\)`
+
+**Sample relationship** - `\(\hat{\mu} = 4.62\)`
+
+]
+
+]
+
+---
+class: clear-slide, middle
+
+Let's repeat this **10,000 times** and then plot the estimates.
+
+(This exercise is called a Monte Carlo simulation.)
+
+---
+class: clear-slide, middle
+
+&lt;img src="03-Statistics_Review_files/figure-html/simulation-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Population *vs.* Sample
+
+**Question:** Why do we care about *population vs. sample*?
+
+.pull-left[
+&lt;img src="03-Statistics_Review_files/figure-html/simulation2-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- On average, the mean of the samples are close to the population mean.
+
+- But some individual samples can miss the mark.
+
+- The difference between individual samples and the population creates __uncertainty__. 
+
+]
+
+???
+
+
+**Question:** Why do we care about *population vs. sample*?
+
+**Answer:** Uncertainty matters.
+
+- `\(\hat{\mu}\)` is a random variable that depends on the sample.
+
+- In practice, we don't know whether our sample is similar to the population or not. 
+
+- Individual samples may have means that differ greatly from the population.
+
+- We will have to keep track of this uncertainty.
+
+
+---
+class: inverse, middle
+
+# Estimators
+
+---
+# Properties of Estimators
+
+An **estimator** is a general rule for estimating an unknown population parameter, given a sample of data. How do we decide which estimator to use?
+
+&lt;img src="03-Statistics_Review_files/figure-html/competing pdfs-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Unbiasedness
+
+An estimator is **unbiased** if the expected value of the estimator is equal to the population parameter  
+
+$$ \mathop{\text{Bias}_\mu} \left( \hat{\mu} \right) = \mathop{\mathbb{E}}\left[ \hat{\mu} \right] - \mu $$
+
+
+
+---
+# Unbiasedness
+
+
+.pull-left[
+
+**Unbiased estimator:** `\(\mathop{\mathbb{E}}\left[ \hat{\mu} \right] = \mu\)`
+
+&lt;img src="03-Statistics_Review_files/figure-html/unbiased pdf-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+--
+
+.pull-right[
+
+**Biased estimator:** `\(\mathop{\mathbb{E}}\left[ \hat{\mu} \right] \neq \mu\)`
+
+&lt;img src="03-Statistics_Review_files/figure-html/biased pdf-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Efficiency
+
+We also care about estimates that have lower variance (more **efficient**). Low variance estimators produce estimates closer to the mean in each sample. 
+
+
+$$ \mathop{\text{Var}} \left( \hat{\mu} \right) = \mathop{\mathbb{E}}\left[ \left( \hat{\mu} - \mathop{\mathbb{E}}\left[ \hat{\mu} \right] \right)^2 \right] $$
+
+
+---
+# Efficiency
+
+
+&lt;img src="03-Statistics_Review_files/figure-html/variance pdf-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# The Bias-Variance Tradeoff
+
+
+&lt;img src="03-Statistics_Review_files/figure-html/variance bias-1.png" style="display: block; margin: auto;" /&gt;
+
+---
+# Unbiased Estimators
+
+__Sample mean__ 
+
+`$$\bar{X} = \frac{1}{n}\Sigma^n_{i=1} X_i$$`
+- __Sample variance__ 
+
+`$$S_{X}^2 = \dfrac{1}{n-1} \sum_{i=1}^n (X_i - \bar{X})^2.$$`
+---
+# Unbiased Estimators
+- __Sample covariance__ 
+
+`$$S_{XY} = \dfrac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})(Y_i - \bar{Y}).$$`
+
+- __Sample correlation__ 
+
+`$$r_{XY} = \dfrac{S_{XY}}{\sqrt{S_X^2} \sqrt{S_Y^2}}.$$`
+
+---
+class: inverse, middle
+
+# Hypothesis Testing
+
+---
+# Hypothesis Testing 
+
+Given What do we make of an estimate of the population mean?
+
+- Is it meaningfully different than existing evidence on the population mean?
+- Is is _statistically distinguishable_ from previously hypothesized values of the population mean?
+- Is the estimate extreme enough to update our prior beliefs about the population mean?
+
+We can conduct statistical tests to address these questions.
+
+---
+# Hypothesis Testing
+
+__Null hypothesis (H.sub[0]):__ `\(\mu = \mu_0\)`
+
+__Alternative hypothesis (H.sub[1]):__ `\(\mu \neq \mu_0\)`
+
+--
+
+There are four possible outcomes of our test:
+
+1. We __fail to reject__ the null hypothesis and the null is true.
+
+2. We __reject__ the null hypothesis and the null is false.
+
+3. We __reject__ the null hypothesis, but the null is actually true (**Type I error**).
+
+4. We __fail to reject__ the null hypothesis, but the null is actually false (**Type II error**).
+
+
+---
+# Hypothesis Testing
+
+`\(\hat{\mu}\)` is random: it could be anything, even if `\(\mu = \mu_0\)` is true.
+
+- But if `\(\mu = 0\)` is true, then `\(\hat{\mu}\)` is unlikely to take values far from zero.
+
+- As the variance of `\(\hat{\mu}\)` shrinks, we are even less likely to observe "extreme" values of `\(\hat{\mu}\)`.
+
+- For now, we'll assume that the variable of interest `\(X\)` is normally distributed with mean `\(\mu\)` and standard deviation `\(\sigma^2\)`.
+
+---
+# Hypothesis Testing
+
+Reject H.sub[0] if `\(\hat{\mu}\)` lies in the .hi[rejection region].
+
+&lt;img src="03-Statistics_Review_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
+
+- The area of the rejection region is defined by the **significance level** of the test.
+- In a 5% test, the area is 0.05. 
+- Significance level .mono[=] tolerance for Type I error.
+
+---
+# Hypothesis Testing
+
+Reject H.sub[0] if `\(\left| z \right| =\left| \dfrac{\hat{\mu} - \mu_0}{\mathop{\text{sd}}(\hat{\mu})} \right| &gt; 1.96\)`.
+
+&lt;img src="03-Statistics_Review_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
+
+What happens to `\(z\)` as `\(\left| \hat{\mu} - \mu_0 \right|\)` increases? 
+
+What happens to `\(z\)` as `\(\mathop{\text{sd}}(\hat{\mu})\)` increases?
+
+---
+# Hypothesis Testing
+
+The formula for the `\(z\)` statistic assumes that we know `\(\mathop{\text{sd}}(\hat{\mu})\)`.
+
+- In practice, we don't know `\(\mathop{\text{sd}}(\hat{\mu})\)`, so we have to estimate it.
+
+--
+
+If the variance of `\(X\)` is `\(\sigma^2\)`, then 
+
+`$$\sigma^2_{\hat{\mu}} = \dfrac{\sigma^2}{n}.$$`
+
+- We can estimate `\(\sigma^2\)` with the sample variance `\(S_{X}^2\)`.
+
+--
+
+The sample variance of the sample mean is
+ 
+`$$S_{\hat{\mu}}^2 = \dfrac{1}{n(n-1)} \sum_{i=1}^n (X_i - \bar{X})^2.$$`
+
+---
+# Hypothesis Testing
+
+The .hi[standard error] of `\(\hat{\mu}\)` is the square root of `\(S_{\hat{\mu}}^2\)`:
+
+`$$\mathop{\text{SE}}(\hat{\mu}) = \sqrt{ \dfrac{1}{n(n-1)} \sum_{i=1}^n (X_i - \bar{X})^2}.$$`
+
+- Standard error = sample standard deviation of an estimator.
+
+--
+
+When we use `\(\mathop{\text{SE}}(\hat{\mu})\)` in place of `\(\mathop{\text{sd}}(\hat{\mu})\)`, the `\(z\)` statistic becomes a `\(t\)` statistic:
+
+`$$t = \dfrac{\hat{\mu} - \mu_0}{\mathop{\text{SE}}(\hat{\mu})}.$$`
+
+- Unlike the standard deviation of `\(\hat{\mu}\)`, `\(\mathop{\text{SE}}(\hat{\mu})\)` varies from sample to sample.
+- **Consequence:** `\(t\)` statistics do not necessarily have a normal distribution.
+
+---
+# Hypothesis Testing
+
+## .hi-green[Normal distribution] vs. .hi-purple[t distribution]
+
+- A normal distribution has the same shape for any sample size.
+- The shape of the t distribution depends the **degrees of freedom**.
+
+&lt;img src="03-Statistics_Review_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+- Degrees of freedom .mono[=] 5.
+
+---
+count: false
+
+# Hypothesis Testing
+
+## .hi-green[Normal distribution] vs. .hi-purple[t distribution]
+
+- A normal distribution has the same shape for any sample size.
+- The shape of the t distribution depends the **degrees of freedom**.
+
+&lt;img src="03-Statistics_Review_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+
+- Degrees of freedom .mono[=] 50.
+
+---
+count: false
+
+# Hypothesis Testing
+
+## .hi-green[Normal distribution] vs. .hi-purple[t distribution]
+
+- A normal distribution has the same shape for any sample size.
+- The shape of the t distribution depends the **degrees of freedom**.
+
+&lt;img src="03-Statistics_Review_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+
+- Degrees of freedom .mono[=] 500.
+
+---
+# Hypothesis Testing
+
+## **t Tests** (two-sided)
+
+To conduct a t test, compare the `\(t\)` statistic to the appropriate .hi[critical value] of the t distribution.
+
+- To find the critical value in a t table, we need the degrees of freedom and the significance level `\(\alpha\)`.
+
+Reject H.sub[0] at the `\(\alpha \cdot 100\)`-percent level if 
+
+`$$\left| t \right| = \left| \dfrac{\hat{\mu} - \mu_0}{\mathop{\text{SE}}(\hat{\mu})} \right| &gt; t_\text{crit}.$$`
+
+---
+# Hypothesis Testing
+
+## On Your Own
+
+As the term progresses, we will encounter additional flavors of hypothesis testing and other related concepts.
+
+You may find it helpful to review the following topics from Math 243:
+
+- Confidence intervals
+- One-sided `\(t\)` tests
+- `\(p\)` values
+
+---
+class: inverse, middle
+
+# Data and the .mono[tidyverse]
+
+---
+# Data
+
+## Experimental data
+
+Data generated in controlled, laboratory settings.
+
+--
+
+Ideal for __causal identification__, but difficult to obtain in the social sciences.
+
+- Intractable logistical problems
+- Too expensive
+- Morally repugnant
+
+--
+
+Experiments outside the lab: __randomized control trials__ and __A/B testing__.
+
+---
+# Data
+
+## Observational data
+
+Data generated in non-experimental settings.
+
+--
+
+- Surveys
+- Censuses
+- Administrative records
+- Environmental data
+- Financial and sales transactions
+- Social media
+
+--
+
+Mainstay of economic research, but __poses challenges__ to causal identification.
+
+
+---
+# Cross Sectional Data
+
+.hi-purple[Sample of individuals from a population at a point in time.]
+
+Ideally, collected using __random sampling__.
+
+- Random sampling .mono[+] sufficient sample size .mono[=] representative sample.
+
+- Random sampling simplifies data analysis, but non-random samples are common (and difficult to work with).
+
+Used extensively in applied microeconomics.&lt;sup&gt;*&lt;/sup&gt;
+
+__Main focus of this course.__
+
+.footnote[
+&lt;sup&gt;*&lt;/sup&gt; Applied microeconomics .mono[=] Labor, health, education, public finance, development, industrial organization, and urban economics.
+]
+
+
+---
+# Time Series Data
+
+.hi-purple[Observations of variables over time.]
+
+- Quarterly US GDP
+- Annual US infant mortality rates
+- Daily Amazon stock prices
+
+Complication: Observations are not independent draws.
+
+- GDP this quarter highly related to GDP last quarter.
+
+Used extensively in empirical macroeconomics.
+
+Requires more-advanced methods (EC 421 and EC 422).
+
+---
+# Pooled Cross Sectional Data
+
+.hi-purple[Cross sections from different points in time.]
+
+Useful for studying policy changes and relationships that change over time.
+
+Requires more-advanced methods (EC 421 and many 400-level applied micro classes).
+
+---
+# Panel or Longitudinal Data
+
+.hi-purple[Time series for each cross-sectional unit.]
+
+- Example: daily attendance data for a sample of students.
+
+Difficult to collect, but useful for causal identification.
+
+- Can control for _unobserved_ characteristics.
+
+Requires more-advanced methods (EC 421 and many 400-level applied micro classes).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
