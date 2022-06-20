@@ -17,7 +17,7 @@ class: inverse, middle
 
 ```{r Setup, include = F}
 
-pagedown::chrome_print("04-Fundamental_Econometric_Problem.html",output="04-Fundamental_Econometric_Problem")
+pagedown::chrome_print("04-Fundamental_Econometric_Problem.html",output="04-Fundamental_Econometric_Problem.pdf")
 options(htmltools.dir.version = FALSE)
 library(pacman)
 #devtools::install_github("dill/emoGG")
