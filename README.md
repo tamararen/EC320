@@ -49,7 +49,7 @@ The HTML versions of the lecture slides allow you to view animations and interac
 
 ## Labs
 
-1. Lab 1 [.html](https://raw.githack.com/tamararen/EC320/master/Lab/Lab1/lab1_markdown.html) <br>  
+1. Lab 1 [.html](https://raw.githack.com/tamararen/EC320/master/Lab/Lab1/lab1_markdown.html) | [.RMD](https://raw.githack.com/tamararen/EC320/master/Lab/Lab1/lab1_markdown.RMD) <br>  
 
 2. Lab 2 <br>
 
@@ -65,5 +65,5 @@ The HTML versions of the lecture slides allow you to view animations and interac
 
 ## Contributors
 
-I am indebted to [Ed Rubin](http://edrub.in/) ([@edrubin](https://github.com/edrubin)), [Kyle Raze](https://kyleraze.com/) ([@kyleraze](https://github.com/kyleraze)), and [Phil Economedes](https://phil-economedes.com/) ([@kyleraze](https://github.com/peconomi)) for their contributions to course materials and the preparation  has put into previous work in this course. 
+I am indebted to [Ed Rubin](http://edrub.in/) ([@edrubin](https://github.com/edrubin)), [Kyle Raze](https://kyleraze.com/) ([@kyleraze](https://github.com/kyleraze)),[Phil Economedes](https://phil-economedes.com/) ([@peconomi](https://github.com/peconomi)), and [Jeni Putz](https://jenniputz.com) for their contributions to course materials and the preparation  they have put into previous work in this course. 
 I also source some material from [Nick Huntington-Klein](https://nickchk.com/) ([@NickCH-K](https://github.com/NickCH-K)), who maintains a [trove of resources](https://nickchk.com/causalgraphs.html) for learning causal inference. 
