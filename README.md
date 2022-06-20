@@ -50,7 +50,7 @@ The HTML versions of the lecture slides allow you to view animations and interac
 ## Labs
 
 1. Lab 1 <br> 
-[.html](https://raw.githack.com/tamararen/EC320/master/Lab/lab1/lab1_markdown.html) 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lab/Lab1/lab1_markdown.html) 
 
 2. Lab 2 <br>
 
