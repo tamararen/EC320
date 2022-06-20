@@ -60,7 +60,7 @@ The HTML versions of the lecture slides allow you to view animations and interac
 
 ## Worksheets 
 
-1. Week 1 [.pdf](https://raw.githack.com/tamararen/EC320/master/Practice Problems/week1.pdf) <br>  
+1. Week 1 [.pdf](https://raw.githack.com/tamararen/EC320/master/worksheet/week1.pdf) <br>  
 <br> 
 
 ## Contributors
