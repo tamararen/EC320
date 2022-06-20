@@ -10,11 +10,11 @@ This course introduces the statistical techniques that help economists learn abo
 
 The HTML versions of the lecture slides allow you to view animations and interactive features, provided that you have an internet connection. The PDF slides don't require an internet connection, but they cannot display the animations or interactive features.
 
-1. **Introduction** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/Lectures/01-Introduction/01-Introduction.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/01-Introduction/01-Introduction.pdf)
+1. **Introduction** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/01-Introduction/01-Introduction.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/01-Introduction/01-Introduction.pdf)
 
 2. **Statistics Review I** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/02-Statistics_Review/02-Statistics_Review.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/02-Statistics_Review/02-Statistics_Review.pdf)
 
-3. **Statistics Review II** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/Lectures/03-Statistics_Review/03-Statistics_Review.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/Lectures/03-Statistics_Review/03-Statistics_Review.pdf)
+3. **Statistics Review II** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/03-Statistics_Review/03-Statistics_Review.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/03-Statistics_Review/03-Statistics_Review.pdf)
 
 4. **The Fundamental Problem of Econometrics** <br> 
 
