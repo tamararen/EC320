@@ -64,5 +64,5 @@ The HTML versions of the lecture slides allow you to view animations and interac
 
 ## Contributors
 
-I am indebted to [Ed Rubin](http://edrub.in/) ([@edrubin](https://github.com/edrubin)), [Kyle Raze](https://kyleraze.com/) ([@kyleraze](https://github.com/kyleraze)),[Phil Economedes](https://phil-economedes.com/) ([@peconomi](https://github.com/peconomi)), and [Jeni Putz](https://jenniputz.com) for their contributions to course materials and the preparation  they have put into previous work in this course. 
+I am indebted to [Ed Rubin](http://edrub.in/) ([@edrubin](https://github.com/edrubin)), [Kyle Raze](https://kyleraze.com/) ([@kyleraze](https://github.com/kyleraze)),[Phil Economides](https://phil-economedes.com/) ([@peconomi](https://github.com/peconomi)), and [Jeni Putz](https://jenniputz.com) for their contributions to course materials and the preparation  they have put into previous work in this course. 
 I also source some material from [Nick Huntington-Klein](https://nickchk.com/) ([@NickCH-K](https://github.com/NickCH-K)), who maintains a [trove of resources](https://nickchk.com/causalgraphs.html) for learning causal inference. 
