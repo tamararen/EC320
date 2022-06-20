@@ -43,6 +43,18 @@ The HTML versions of the lecture slides allow you to view animations and interac
 
 16. **Final Review** <br> 
 
+## Labs
+
+1. Lab 1 <br>
+
+2. Lab 2 <br>
+
+3. Lab 3 <br>
+
+4. Lab 4 <br> 
 
 
+## Contributors
 
+I am indebted to [Ed Rubin](http://edrub.in/) ([@edrubin](https://github.com/edrubin)), [Kyle Raze](https://kyleraze.com/) ([@kyleraze](https://github.com/kyleraze)), and [Phil Economedes](https://phil-economedes.com/) ([@kyleraze](https://github.com/peconomi)) for their contributions to course materials and the preparation  has put into previous work in this course. 
+I also source some material from [Nick Huntington-Klein](https://nickchk.com/) ([@NickCH-K](https://github.com/NickCH-K)), who maintains a [trove of resources](https://nickchk.com/causalgraphs.html) for learning causal inference. 
