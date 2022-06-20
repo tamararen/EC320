@@ -15,7 +15,10 @@ output:
 ---
 class: inverse, middle
 
-```{r, SETUP, include = F}
+```{r, include = F}
+
+
+to_pdf("03-Statistics_Review.RMD")
 options(htmltools.dir.version = FALSE)
 
 library(pacman)
@@ -916,9 +919,3 @@ Difficult to collect, but useful for causal identification.
 
 Requires more-advanced methods (EC 421 and many 400-level applied micro classes).
 
-
-```{r,download}
-
-to_pdf("03-Statistics_Review.RMD")
-
-```
