@@ -13,14 +13,14 @@ Goals of the lesson:
 
 *  Read in a csv file
 *  Manipulate data using dplyr functions
-* Create data visualizations with ggplot
+*  Create data visualizations with ggplot
 
 
 # Using Packages
 R is really useful because of its ability to use packages. Pacman is a package for "package management" - it helps us load multiple packages at onc.
 
 ```{r}
-#install.packages("pacman")
+install.packages("pacman")
 ```
 We need to load the a package after installing it to use it by using `library()`.
 ```{r}
@@ -29,7 +29,7 @@ library(pacman)
 
 Now we use the p_load function to load other packages we want to use. Today, we will use the `tidyverse()` package.
 ```{r}
-p_load(tidyverse)
+p_load(tidyverse,ggplot2)
 ```
 
 # Tidyverse
@@ -54,7 +54,7 @@ Now, if this is not the same location as your Downloads folder, you need to tell
 
 For example, if I want to go to my Downloads folder on my mac, I can write:
 ```{r}
-setwd("~/Dropbox (University of Oregon)/EC320--Ren--2022/EC320/EC320/Lab/Lab2") # commented out so it doesn't run this line!
+#setwd("~/Dropbox (University of Oregon)/EC320--Ren--2022/EC320/EC320/Lab/Lab2") # commented out so it doesn't run this line!
 
 # Note, if you are on windows, your file path would start with a C:\ and use \'s
 ```
@@ -77,6 +77,8 @@ names(our_data)
 Let's select only the name, gender, and homeworld variables
 ```{r}
 select(our_data, c(name, gender, homeworld))
+
+#c() == vector 
 ```
 Notice that this didn't save anything in our global environment! If you want to save this new dataframe, you have to give it a name!
 
@@ -88,6 +90,8 @@ select(our_data, c(-homeworld, -gender))
 Filter the data frame to include only droids
 ```{r}
 filter(our_data, species == "Droid")
+
+
 ```
 
 Filter the data frame to include droids OR humans
@@ -103,7 +107,7 @@ filter(our_data, height > 100 & mass > 100)
 ### Piping
 What if we want to do those things all in one step??? The tidyverse allows us to chain functions together with %>%. This is called a pipe and the pipe connects the LHS to the RHS (like reading a book). Let's make a new dataframe where we select the name, height, and mass. Filter out those who are shorter than 100 cm.
 ```{r}
-new_df <- our_data %>% select(name, height, mass) %>% filter(height >= 100)
+new_df <-our_data %>% select(name, height, mass) %>% filter(height >= 100)
 new_df
 ```
 
@@ -111,6 +115,7 @@ Self check: make a new data frame where you select all columns except gender and
 ```{r}
 #example:
 example_df <- our_data %>% select(-gender) %>% filter(skin_color == "green")
+example_df
 ```
 
 
@@ -127,7 +132,8 @@ our_data %>% arrange(desc(height))
 
 Self check: Arrange the characters names in alphabetical order
 ```{r}
-#example: our_data %>% arrange(name)
+#example:
+our_data %>% arrange(name)
 ```
 
 ### Mutate
@@ -152,6 +158,9 @@ Self check: Create a new variable that is the sum of person's mass and height
 This will group data together and can make summary statistics. Let's find the average height for each species
 ```{r}
 our_data %>% group_by(species) %>% summarize(avg_height = mean(height))
+
+our_data %>% group_by(species) %>% mutate(avg_height = mean(height,na.rm=TRUE)) %>% ungroup()
+
 ```
 
 Notice we have NA's! We can get rid of those
