@@ -50,7 +50,8 @@ The HTML versions of the lecture slides allow you to view animations and interac
 
 1. Lab 1 [.html](https://raw.githack.com/tamararen/EC320/master/Lab/Lab1/lab1_markdown.html) | [.RMD](https://raw.githack.com/tamararen/EC320/master/Lab/Lab1/lab1_markdown.Rmd) <br>  
 
-2. Lab 2 [.html](https://raw.githack.com/tamararen/EC320/master/Lab/Lab2/lab2.html) | [.RMD](https://raw.githack.com/tamararen/EC320/master/Lab/Lab2/lab2.Rmd) <br>  
+2. Lab 2 [.html](https://raw.githack.com/tamararen/EC320/master/Lab/Lab2/lab2.html) | [.RMD](https://raw.githack.com/tamararen/EC320/master/Lab/Lab2/lab2.Rmd)
+| [data](https://raw.githack.com/tamararen/EC320/master/Lab/Lab2/lab2.csv)   <br>  
 
 3. Lab 3 <br>
 
