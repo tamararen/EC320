@@ -54,7 +54,7 @@ Now, if this is not the same location as your Downloads folder, you need to tell
 
 For example, if I want to go to my Downloads folder on my mac, I can write:
 ```{r}
-setwd("~/Dropbox (University of Oregon)/EC320--Ren--2022/EC320/EC320/Lab") # commented out so it doesn't run this line!
+setwd("~/Dropbox (University of Oregon)/EC320--Ren--2022/EC320/EC320/Lab/Lab2") # commented out so it doesn't run this line!
 
 # Note, if you are on windows, your file path would start with a C:\ and use \'s
 ```
@@ -62,7 +62,7 @@ setwd("~/Dropbox (University of Oregon)/EC320--Ren--2022/EC320/EC320/Lab") # com
 Now R will be working in my Downloads folder. We can read in our data using `read_csv()`. Remember that everything in R is an object, so you *must* give your data frame a name.
 
 ```{r}
-our_data <- read_csv("Lab/Lab2/Lab2.csv") # this should read after changing to the appropriate wd using setwd() above
+our_data <- read_csv("Lab2.csv") # this should read after changing to the appropriate wd using setwd() above
 ```
 
 ## Dplyr Functions
@@ -109,7 +109,8 @@ new_df
 
 Self check: make a new data frame where you select all columns except gender and has characters that have green skin color
 ```{r}
-#example: example_df <- our_data %>% select(-gender) %>% filter(skin_color == "green")
+#example:
+example_df <- our_data %>% select(-gender) %>% filter(skin_color == "green")
 ```
 
 
