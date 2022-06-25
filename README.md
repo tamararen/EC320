@@ -22,29 +22,31 @@ The HTML versions of the lecture slides allow you to view animations and interac
 ### Week 2 
 5. **Regression Logic** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/05-Regression_Logic/05-Regression_Logic.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/05-Regression_Logic/05-Regression_Logic.pdf) 
 
-7. **Simple Linear Regression: Estimation I** <br> 
+6. **Simple Linear Regression: Estimation I** <br> 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/07-Simple_Linear_regression_Estimation/07-Simple_Linear_Regression_Estimation.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/07-Simple_Linear_regression_Estimation/07-Simple_Linear_Regression_Estimation.pdf) 
 
-8. **Simple Linear Regression: Estimation II** <br> 
+7. **Simple Linear Regression: Estimation II** <br> 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/08-Simple_Linear_Regression_Estimation/08-Simple_Linear_Regression_Estimation.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/08-Simple_Linear_Regression_Estimation/08-Simple_Linear_Regression_Estimation.pdf) 
 
-9. **Classical Assumptions** <br> 
+8. **Classical Assumptions** <br> 
 
 ### Week 3
 
-10. **Simple Linear Regression: Inference** <br> 
+9. **Simple Linear Regression: Inference** <br> 
 
-11. **Multiple Linear Regression: Estimation** <br> 
+10. **Multiple Linear Regression: Estimation** <br> 
 
-12. **Multiple Linear Regression: Inference** <br> 
+11. **Multiple Linear Regression: Inference** <br> 
 
-13. **Categorical Variables** <br> 
+12. **Categorical Variables** <br> 
 
 
 ### Week 4
-14. **Interactive Relationships** <br> 
+13. **Interactive Relationships** <br> 
 
-15. **Nonlinear Relationships** <br> 
+14. **Nonlinear Relationships** <br> 
 
-16. **Final Review** <br> 
+15. **Final Review** <br> 
 
 ## Labs
 
