@@ -1,89 +1,16 @@
-% !TEX program = XeLaTex
-\documentclass[12pt]{exam}
-\usepackage[margin=1in]{geometry}
+---
+title: "Introduction to Econometrics"
+author: "Tami Ren"
+date: "6/27/2022"
+output:
+  pdf_document: default
+  html_document: default
+subtitle: OLS Derivation
+---
 
-\RequirePackage{amssymb, amsfonts, amsmath, latexsym, verbatim, xspace, setspace, blindtext, graphicx, caption, enumerate, titling, textcomp, float, array, dcolumn}
-
-\usepackage{setspace, titling}
-\newcommand{\subtitle}[1]{%
-	\posttitle{%
-		\par\end{center}
-	\begin{center}\large#1\end{center}
-	\vskip0.5em}%
-}
-
-%% FONTS
-\usepackage{fontspec}
-% See: https://tex.stackexchange.com/a/50593
-%\setmainfont[
-%BoldFont       = FiraSans-SemiBold.otf,
-%ItalicFont     = FiraSans-Italic.otf,
-%BoldItalicFont = FiraSans-SemiBoldItalic.otf
-]{FiraSans-Regular.otf} %
-\setmonofont[
-BoldFont       = FiraCode-Bold.ttf
-]{FiraCode-Regular.ttf}
-%\textsc{\setmathfont(Greek){FiraSans-Italic.otf}
-%\setmathfont(Latin,Digits){FiraMath-Regular.otf}}
-%\usepackage[mathrm=sym]{unicode-math}
-%\setmathfont{Fira Math}
-%\usepackage{marvosym} % For cool symbols.
-%\usepackage{fontawesome} % Ditto
-%\usepackage{libertine}
-
-\usepackage[normalem]{ulem} %% For strikeout font: \sout()
-
-\usepackage[dvipsnames]{xcolor}
-\definecolor{uo_green}{HTML}{154733}
-\definecolor{forest_green}{HTML}{006241}
-\definecolor{pine_green}{HTML}{007935}
-\definecolor{grass_green}{HTML}{62A70F}
-\definecolor{golden_yellow}{HTML}{FFD200}
-\definecolor{cool_gray}{HTML}{54565B}
-\definecolor{light_cool_gray}{HTML}{A8A8AA}
-
-\usepackage{listings}
-\lstset{language=R,
-basicstyle=\small\ttfamily,
-stringstyle=\color{cool_gray},
-otherkeywords={0,1,2,3,4,5,6,7,8,9},
-morekeywords={TRUE,FALSE},
-deletekeywords={data,frame,length,as,character,},
-keywordstyle=\color{cool_gray},
-commentstyle=\color{pine_green},
-}
-
-\usepackage[colorlinks = true,
-linkcolor = pine_green,
-urlcolor  = pine_green,
-citecolor = pine_green,
-anchorcolor = black]{hyperref}
-\usepackage{graphicx}
-
-% For table formatting:
-\usepackage{array, booktabs, caption, siunitx}
-\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
-\newcolumntype{d}[1]{D{.}{.}{#1}}
-
-% Class and assignment info
-
-\newcommand{\class}{\textbf{Introduction to Econometrics} [EC 320]}
-\newcommand{\assignment}{OLS Derivation}
-\newcommand{\instructor}{Instructor: Tami Ren}
-\newcommand{\institution}{University of Oregon}
-\newcommand{\department}{Department of Economics}
-
-%------------------------------------------------------------------%
-
-\title{\texttt{\textbf{\assignment}} \\ \texttt{\class}}
-\author{\text{\instructor} \\ \text{\institution} \\ \text{\department}}
-\date{}
-
-%------------------------------------------------------------------%
-
-\begin{document}
-
-\maketitle
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 \subsection*{Getting started}
 
@@ -195,10 +122,10 @@ n \hat{\beta}_1 = n \bar{Y} - \hat{\beta}_2 n \bar{X}.
 \end{align}
 
 
-\noindent Using this trick, we will now subtract zero. Our choice of ``$\color{pine_green}{\text{zero}}$'' is strategic. If you have trouble following this step, you can try working backwards from the end.
+\noindent Using this trick, we will now subtract zero. Our choice of zero is strategic. If you have trouble following this step, you can try working backwards from the end.
 
 \begin{align}
-\hat{\beta}_2 &= \dfrac{\sum_{i=1}^n Y_i X_i -  \bar{Y} \sum_{i=1}^n X_i - \color{pine_green}{\bar{X} \sum_{i=1}^n (Y_i - \bar{Y})}} {\sum_{i=1}^n X_i^2 - \bar{X} \sum_{i=1}^n X_i - \color{pine_green}{\bar{X} \sum_{i=1}^n  (X_i - \bar{X}) }}.
+\hat{\beta}_2 &= \dfrac{\sum_{i=1}^n Y_i X_i -  \bar{Y} \sum_{i=1}^n X_i - {\bar{X} \sum_{i=1}^n (Y_i - \bar{Y})}} {\sum_{i=1}^n X_i^2 - \bar{X} \sum_{i=1}^n X_i - {\bar{X} \sum_{i=1}^n  (X_i - \bar{X}) }}.
 \end{align}
 
 \noindent Distribute terms and pull constants into the sums to obtain
@@ -236,4 +163,3 @@ n \hat{\beta}_1 = n \bar{Y} - \hat{\beta}_2 n \bar{X}.
 
 \noindent Crisis averted. Now we can say that we've minimized the residual sum of squares.
 
-\end{document}

@@ -16,6 +16,9 @@ output:
 
 ```{r Setup, include = F}
 options(htmltools.dir.version = FALSE)
+
+pagedown::chrome_print("07-Simple_Linear_Regression_Estimation.html",output="07-Simple_Linear_Regression_Estimation.pdf")
+
 library(pacman)
 p_load(ggthemes, viridis, knitr, extrafont, tidyverse, magrittr, wooldridge,xaringanthemer)
 # Data 

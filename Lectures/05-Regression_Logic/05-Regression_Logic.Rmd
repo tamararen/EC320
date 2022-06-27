@@ -17,7 +17,7 @@ class: inverse, middle
 
 ```{r, SETUP, include = F}
 options(htmltools.dir.version = FALSE)
-
+pagedown::chrome_print("05-Regression_Logic.html",output="05-Regression_Logic.pdf")
 knitr::opts_chunk$set(
   fig.align = "center",
   fig.height = 7,
@@ -296,7 +296,11 @@ $$Y_i = \beta_0 + \beta_1 X_i + \beta_2 W_i + u_i$$
 # )
 ```
 
-.center[![Control](control.gif)]
+```{r, echo=FALSE, out.width="70%"}
+knitr::include_graphics("control.gif")
+```
+
+
 
 ---
 # Controlling for Confounders
