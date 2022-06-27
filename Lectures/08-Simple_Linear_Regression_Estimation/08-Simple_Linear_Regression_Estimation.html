@@ -30,92 +30,6 @@ class: inverse, middle
 
 
 
-# Prologue
-
----
-# Last Time
-
-We considered a simple linear regression of `\(Y_i\)` on `\(X_i\)`:
-
-$$
- Y_i = \beta_1 + \beta_2X_i + u_i.
-$$
-
---
-
-- `\(\beta_1\)` and `\(\beta_2\)` are __population parameters__ that describe the *"true"* relationship between `\(X_i\)` and `\(Y_i\)`.
-
-- __Problem:__ We don't know the population parameters. The best we can do is to estimate them.
-
----
-# Last Time
-
-We derived the OLS estimator by picking estimates that minimize `\(\sum_{i=1}^n \hat{u}_i^2\)`.
-
-- __Intercept:__
-
-$$ \hat{\beta}_1 = \bar{Y} - \hat{\beta}_2 \bar{X}. $$
-
-- __Slope:__
-
-$$
-`\begin{aligned}
-\hat{\beta}_2 &amp;= \dfrac{\sum_{i=1}^n (Y_i - \bar{Y})(X_i - \bar{X})}{\sum_{i=1}^n  (X_i - \bar{X})^2}.
-\end{aligned}`
-$$
-
-We used these formulas to obtain estimates of the parameters `\(\beta_1\)` and `\(\beta_2\)` in a regression of `\(Y_i\)` on `\(X_i\)`.
-
----
-# Last Time
-
-With the OLS estimates of the population parameters, we constructed a regression line: 
-
-$$
- \hat{Y_i} = \hat{\beta}_1 + \hat{\beta}_2X_i.
-$$
-
-- `\(\hat{Y_i}\)` are predicted or __fitted__ values of `\(Y_i\)`. 
-
-- You can think of `\(\hat{Y_i}\)` as an estimate of the average value of `\(Y_i\)` given a particular of `\(X_i\)`. 
-
---
-
-OLS still produces prediction errors: `\(\hat{u}_i = Y_i - \hat{Y_i}\)`.
-
-- Put differently, there is a part of `\(Y_i\)` we can explain and a part we cannot: `\(Y_i = \hat{Y_i} + \hat{u}_i\)`.
-
----
-# Review
-
-What is the equation for the regression model estimated below? 
-
-&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
-
----
-# Review
-
-The estimated __intercept__ is -13.11. What does this tell us? 
-
-&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
-
----
-# Review
-
-The estimated __slope__ is 2.5. How do we interpret it?
-
-&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
-
----
-# Today
-
-## Agenda
-
-1. Highlight important properties of OLS.
-
-2. Discuss goodness of fit: how well does one variable explain another?
-
-2. Units of measurement.
 
 ---
 class: inverse, middle
@@ -140,14 +54,14 @@ Residuals sum to zero: `\(\sum_{i=1}^n \hat{u}_i = 0\)`.
 
 - By extension, the sample mean of the residuals are zero.
 
-- You will prove this in Problem Set 3.
+
 
 ---
 # OLS Residuals
 
 The sample covariance between the independent variable and the residuals is zero: `\(\sum_{i=1}^n X_i \hat{u}_i = 0\)`.
 
-- You will prove a version of this in Problem Set 3.
+
 
 ---
 # OLS Regression Line
@@ -189,13 +103,13 @@ class: inverse, middle
 
 .pull-left[
 
-&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-1-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
 .pull-right[
 
-&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-2-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -219,7 +133,7 @@ The __coefficient of determination__ `\(R^2\)` is the fraction of the variation 
 `\(R^2\)` .mono[=] 0.74
 ]
 
-&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -229,7 +143,7 @@ The __coefficient of determination__ `\(R^2\)` is the fraction of the variation 
 `\(R^2\)` .mono[=] 0.06
 ]
 
-&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="08-Simple_Linear_Regression_Estimation_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
