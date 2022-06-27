@@ -23,10 +23,10 @@ The HTML versions of the lecture slides allow you to view animations and interac
 5. **Regression Logic** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/05-Regression_Logic/05-Regression_Logic.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/05-Regression_Logic/05-Regression_Logic.pdf) 
 
 6. **Simple Linear Regression: Estimation I** <br> 
-[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/07-Simple_Linear_regression_Estimation/07-Simple_Linear_Regression_Estimation.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/07-Simple_Linear_regression_Estimation/07-Simple_Linear_Regression_Estimation.pdf) 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/07-Simple_Linear_regression_Estimation/07-Simple_Linear_Regression_Estimation.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/07-Simple_Linear_Regression_Estimation/07-Simple_Linear_Regression_Estimation.pdf) 
 
 7. **Simple Linear Regression: Estimation II** <br> 
-[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/08-Simple_Linear_Regression_Estimation/08-Simple_Linear_Regression_Estimation.html) | [.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/08-Simple_Linear_Regression_Estimation/08-Simple_Linear_Regression_Estimation.pdf) 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/08-Simple_Linear_Regression_Estimation/08-Simple_Linear_Regression_Estimation.html) 
 
 8. **Classical Assumptions** <br> 
 
