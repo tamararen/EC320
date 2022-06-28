@@ -29,6 +29,7 @@ The HTML versions of the lecture slides allow you to view animations and interac
 [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/08-Simple_Linear_Regression_Estimation/08-Simple_Linear_Regression_Estimation.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/08-Simple_Linear_Regression_Estimation/08-Simple_Linear_Regression_Estimation.pdf)  
 
 8. **Classical Assumptions** <br> 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/09-Classical_Assumptions/09-Classical_Assumptions.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/09-Classical_Assumptions/09-Classical_Assumptions.pdf)  
 
 ### Week 3
 
