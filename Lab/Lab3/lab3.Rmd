@@ -1,0 +1,175 @@
+---
+title: "Lab 3"
+author: "Tami Ren"
+date: "July 2 2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, cache=TRUE)
+
+options(htmltools.dir.version = FALSE)
+library(pacman)
+p_load(broom, latex2exp, leaflet, ggplot2, ggthemes, viridis, dplyr, magrittr, knitr, parallel, rddtools, readxl, dslabs, gapminder, extrafont, Ecdat, wooldridge, tidyverse, janitor, kableExtra, gridExtra, estimatr, jtools, huxtable)
+# Define pink color
+red_pink <- "#e64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#fb6107"
+blue <- "#3b3b9a"
+green <- "#8bb174"
+grey_light <- "grey70"
+grey_mid <- "grey50"
+grey_dark <- "grey20"
+purple <- "#6A5ACD"
+slate <- "#314f4f"
+# Dark slate grey: #314f4f
+# Notes directory
+dir_slides <- "/Users/tami/Dropbox (University of Oregon)/EC320--Ren--2022/Homework/Homework2"
+# Knitr options
+opts_chunk$set(
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 4,
+  fig.width = 6,
+  # dpi = 300,
+  # cache = T,
+  warning = F,
+  message = F
+)
+# A blank theme for ggplot
+theme_empty <- theme_bw() + theme(
+  line = element_blank(),
+  rect = element_blank(),
+  strip.text = element_blank(),
+  axis.text = element_blank(),
+  plot.title = element_blank(),
+  axis.title = element_blank(),
+  plot.margin = structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_simple <- theme_bw() + theme(
+  line = element_blank(),
+  panel.grid = element_blank(),
+  rect = element_blank(),
+  axis.text.x = element_text(size = 10),
+  axis.text.y = element_text(size = 10),
+  axis.ticks = element_blank(),
+  plot.title = element_blank(),
+  axis.title.x = element_text(angle = 0, vjust = 0.5),
+  axis.title.y = element_text(angle = 90, vjust = 0.5),
+  legend.position = "none",
+  axis.line = element_line(color="black", size = .5)
+)
+```
+
+# {.tabset .tabset-fade .tabset-pills}
+
+## Lab 3 
+
+In this lab, I will show you how to run a regression, create a pretty regression table, and evaluate results from a simulation. 
+
+### The data-generating process
+
+Suppose the effect of variable X on Y in the population is defined by the following data generating process (DGP). The distribution of X is normal with a mean of 10 and a variance of 2. 
+
+$$
+\begin{align}
+  \text{X}\sim&\mathop{\text{Norm}}(10, 2), \\
+  \text{Y} =& \ \ 1 + 5\text{X} + \varepsilon, \ \\
+\end{align}
+$$
+
+where $\varepsilon\sim\mathop{N}(0,1)$ 
+
+```{r, ssim_dgp}
+library(pacman)
+p_load(dplyr, ggplot2)
+# Choose an observation count (number of rows)
+n <- 100000
+set.seed(12345)
+# Generate data in a tibble
+df = tibble( 
+  e = rnorm(n, sd = 1),
+  X = rnorm(n, mean = 10, sd=2),
+  Y = 1 + 5*X + e
+)
+```
+
+
+Suppose you are estimating the effect of X on Y. As an economist, you need  a sample of data. You are able to get a sample of data for 100 different people in the population. 
+
+```{r sample}
+#set.seed(145)
+sample_df =df[sample(nrow(df), size=100),]
+```
+
+### Regression
+
+
+
+```{r,regression}
+reg1 = lm(Y ~ X, sample_df)
+
+```
+#### 2. Present your result in a table (use stargazer or export_summs) 
+
+```{r, one_table}
+library(stargazer)
+#stargazer(reg1 ,keep=c("Y","X"), type="html", covariate.labels="X",dep.var.labels="Y",digits=3)
+```
+<table style="text-align:center"><tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="1" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td>Y</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">X</td><td>4.998<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.054)</td></tr>
+<tr><td style="text-align:left"></td><td></td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>100</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.989</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.989</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>1.048 (df = 98)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>8,699.575<sup>***</sup> (df = 1; 98)</td></tr>
+<tr><td colspan="2" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table>
+
+
+#### Residuals
+
+```{r, residuals}
+
+plot(residuals(reg1))
+
+sample_df =sample_df %>% mutate(diff_err = residuals(reg1) - sample_df$e,
+                                resid = residuals(reg1))
+
+#View(sample_df)
+
+sample_df %>% ggplot() + 
+  geom_density(aes(diff_err))
+
+```
+#### Simulations
+
+```{r, sim-fit_do-not-change}
+
+sim_fit_fun <- function () {
+  fit <-lm(Y ~ X, data=df, subset = sample(nrow(df), 1000))
+  coef(fit)
+  }
+
+sim_fit_df <- as.data.frame(t(replicate(10000, sim_fit_fun())))
+
+#View(sim_fit_df)
+
+```
+
+### Plot the simulation
+
+```{r, density_sim}
+
+sim_fit_df %>% ggplot() + 
+  geom_density(aes(X), fill="dark blue") + theme_minimal() + labs(title = "Density of the coefficient values from the simulation ")
+
+mean(sim_fit_df$X)
+
+```
