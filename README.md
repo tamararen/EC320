@@ -34,7 +34,7 @@ The HTML versions of the lecture slides allow you to view animations and interac
 ### Week 3
 
 9. **Simple Linear Regression: Inference** <br> 
-[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/10-Simple_Linear_regression_Inference/10-Simple_Linear_Regression_Inference.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/10-Simple_Linear_Regression_Inference/10-Simple_Linear_regression_Inference.pdf)  
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/10-Simple_Linear_Regression_Inference/10-Simple_Linear_Regression_Inference.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/10-Simple_Linear_Regression_Inference/10-Simple_Linear_Regression_Inference.pdf)  
 
 
 10. **Multiple Linear Regression: Estimation** <br> 
