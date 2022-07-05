@@ -34,20 +34,23 @@ The HTML versions of the lecture slides allow you to view animations and interac
 ### Week 3
 
 9. **Simple Linear Regression: Inference** <br> 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/10-Simple_Linear_regression_Inference/10-Simple_Linear_regression_Inference.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/10-Simple_Linear_regression_Inference/10-Simple_Linear_regression_Inference.pdf)  
+
 
 10. **Multiple Linear Regression: Estimation** <br> 
 
 11. **Multiple Linear Regression: Inference** <br> 
 
-12. **Categorical Variables** <br> 
 
 
 ### Week 4
+
+12. **Categorical Variables** <br> 
+
 13. **Interactive Relationships** <br> 
 
 14. **Nonlinear Relationships** <br> 
 
-15. **Final Review** <br> 
 
 ## Labs
 
