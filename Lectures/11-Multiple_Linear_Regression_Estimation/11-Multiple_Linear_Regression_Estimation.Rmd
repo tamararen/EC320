@@ -59,6 +59,10 @@ election <- read_csv("election_2016.csv") %>%
          clinton_pct = clinton/totalvotes*100,
          trump_margin = trump_pct - clinton_pct,
          nonwhite = 100 - white)
+
+
+library(pagedown)
+pagedown::chrome_print("11-Multiple_Linear_Regression_Estimation.html", output = "11-Multiple_Linear_Regression_Estimation.pdf")
 ```
 
 ---
@@ -276,12 +280,8 @@ lm(trump_margin ~ white + poverty, data = election) %>% glance()
 
 Same as before, except for .pink[assumption 2]:
 
-1. **Linearity:** The population relationship is linear in parameters with an additive error term.
-2. .hi[No perfect collinearity:] .pink[No] $\color{#e64173}{X}$ .pink[variable is a perfect linear combination of the others.]
-3. **Random Sampling:** We have a random sample from the population of interest.
-4. **Exogeneity:** The $X$ variable is exogenous (*i.e.,* $\mathop{\mathbb{E}}\left( u|X \right) = 0$).
-5. **Homoskedasticity:** The error term has the same variance for each value of the independent variable (*i.e.,* $\mathop{\text{Var}}(u|X) = \sigma^2$).
-6. **Normality:** The population error term is normally distributed with mean zero and variance $\sigma^2$ (*i.e.,* $u \sim N(0,\sigma^2)$)
+
+.hi[No perfect collinearity:] .pink[No] $\color{#e64173}{X}$ .pink[variable is a perfect linear combination of the others.]
 
 ---
 # Perfect Collinearity
