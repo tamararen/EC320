@@ -38,6 +38,8 @@ The HTML versions of the lecture slides allow you to view animations and interac
 
 
 10. **Multiple Linear Regression: Estimation** <br> 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/11-Multiple_Linear_Regression_Estimation/11-Multiple_Linear_Regression_Estimation.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/11-Multiple_Linear_Regression_Estimation/11-Multiple_Linear_Regression_Estimation.pdf)  
+
 
 11. **Multiple Linear Regression: Inference** <br> 
 

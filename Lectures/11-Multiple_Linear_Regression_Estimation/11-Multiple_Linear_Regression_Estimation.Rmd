@@ -1,15 +1,16 @@
 ---
 title: "Multiple Linear Regression: Estimation"
 subtitle: "EC 320: Introduction to Econometrics"
-author: "Kyle Raze"
-date: "Fall 2019"
+author: "Tami Ren"
+date: "Summer 2022"
 output:
-  xaringan::moon_reader:
-    css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
-    # self_contained: true
+   xaringan::moon_reader:
+    css: xaringan-themer.css
     nature:
+      slideNumberFormat: "%current%"
       highlightStyle: github
       highlightLines: true
+      ratio: 16:9
       countIncrementalSlides: false
 ---
 class: inverse, middle
@@ -17,9 +18,9 @@ class: inverse, middle
 ```{r Setup, include = F}
 options(htmltools.dir.version = FALSE)
 library(pacman)
-p_load(ggthemes, viridis, knitr, extrafont, tidyverse, magrittr, wooldridge, dagitty, ggdag, latex2exp, parallel, broom, kableExtra, ggforce, furrr)
+p_load(ggthemes, viridis, knitr, extrafont, tidyverse, magrittr, wooldridge, dagitty, ggdag, latex2exp, parallel, broom, kableExtra, ggforce, furrr, xaringanthemer)
 
-dir_slides <- "~/GitHub/EC320_Econometrics/Lectures/11-Multiple_Linear_Regression_Estimation/"
+dir_slides <- "~/Lectures/11-Multiple_Linear_Regression_Estimation/"
 
 
 # Define colors
@@ -45,37 +46,12 @@ opts_chunk$set(
   warning = F,
   message = F
 )  
-theme_gif <- theme_bw() + theme(
-  axis.line = element_line(color = met_slate),
-  panel.grid = element_blank(),
-  rect = element_blank(),
-  strip.text = element_blank(),
-  text = element_text(family = "Fira Sans", color = met_slate, size = 14),
-  axis.text.x = element_text(size = 12),
-  axis.text.y = element_text(size = 12),
-  axis.ticks = element_blank()
-)
-theme_simple <- theme_bw() + theme(
-  axis.line = element_line(color = met_slate),
-  panel.grid = element_blank(),
-  rect = element_blank(),
-  strip.text = element_blank(),
-  text = element_text(family = "Fira Sans", color = met_slate, size = 14),
-  axis.text.x = element_text(size = 12),
-  axis.text.y = element_text(size = 12),
-  axis.ticks = element_blank(),
-  plot.title = element_blank(),
-  legend.position = "none"
-)
-theme_empty <- theme_bw() + theme(
-  line = element_blank(),
-  rect = element_blank(),
-  strip.text = element_blank(),
-  axis.text = element_blank(),
-  plot.title = element_blank(),
-  axis.title = element_blank(),
-  plot.margin = structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit"),
-  legend.position = "none"
+
+#Theme style
+style_duo_accent(
+  primary_color = "#1F4257",
+  secondary_color = "#F97B64",
+  inverse_header_color = "#FFFFFF"
 )
 # election data
 election <- read_csv("election_2016.csv") %>% 
@@ -83,144 +59,6 @@ election <- read_csv("election_2016.csv") %>%
          clinton_pct = clinton/totalvotes*100,
          trump_margin = trump_pct - clinton_pct,
          nonwhite = 100 - white)
-```
-
-# Prologue
-
----
-# Other Things Being Equal
-
-**Goal:** Isolate the effect of one variable on another.
-
-- All else equal, how does increasing $X$ affect $Y$.
-
---
-
-**Challenge:** Changes in $X$ often coincide with changes in other variables.
-
-- Failure to account for other changes can _bias_ OLS estimates of the effect of $X$ on $Y$.
-
---
-
-**A potential solution:** Account for other variables using .hi[multiple linear regression].
-
-- Easier to defend the exogeneity assumption. 
-
----
-# Other Things Equal?
-
-OLS picks $\hat{\beta}_0$ and $\hat{\beta}_1$ that trace out the line of best fit. Ideally, we wound like to interpret the slope of the line as the causal effect of $X$ on $Y$.
-
-```{r, cache = T, include = F}
-df <- data.frame(W = as.integer((1:200>100))) %>%
-  mutate(X = .5+2*W + rnorm(200)) %>%
-  mutate(Y = -.5*X + 4*W + 1 + rnorm(200),time="1")
-  
-df2 <- df %>% 
-  group_by(W) %>%
-  mutate(mean_X=mean(X),mean_Y=mean(Y)) %>%
-  ungroup()
-```
-
-```{r, dev = "svg", echo = F, fig.height = 5.5}
-ggplot(data = df2, aes(y = Y, x = X)) +
-  geom_point() +
-  geom_smooth(method = lm, se = F, color = "#9370DB") +
-  theme_simple
-```
-
----
-# Confounders
-
-However, the data are grouped by a third variable $W$. How would omitting $W$ from the regression model affect the slope estimator?
-
-```{r, dev = "svg", echo = F, fig.height = 5.5}
-ggplot(data = df2, aes(y = Y, x = X, color = as.factor(W))) +
-  geom_point() +
-  theme_gif + 
-  labs(color = "W") +
-  scale_color_manual(values = c("darkslategrey", red_pink))
-```
-
----
-# Confounders
-
-The problem with $W$ is that it affects both $Y$ and $X$. Without adjusting for $W$, we cannot isolate the causal effect of $X$ on $Y$.
-
-```{r, dev = "svg", echo = F, fig.height = 5.5}
-dag1 <- dagify(Y ~ X + W,
-               X ~ W,
-               exposure = "X",
-               outcome = "Y")
-
-ggplot(data = dag1, aes(x = x, y = y, xend = xend, yend = yend)) +
-      geom_dag_point(color = red_pink) +
-      geom_dag_edges() +
-      geom_dag_text(family = "Fira Sans") +
-      theme_dag()
-```
-
----
-# Controlling for Confounders
-
-```{r, include = F, cache = T}
-# the code below produces the gif, but throws an error that prevents me from compiling the slides
-
-# #Calculate correlations
-# before_cor <- paste("1. Start with raw data. Correlation between X and Y: ",round(cor(df$X,df$Y),3),sep='')
-# after_cor <- paste("6. Analyze what's left! Correlation between X and Y controlling for W: ",round(cor(df$X-df$mean_X,df$Y-df$mean_Y),3),sep='')
-# 
-# #Add step 2 in which X is demeaned, and 3 in which both X and Y are, and 4 which just changes label
-# dffull <- rbind(
-#   #Step 1: Raw data only
-#   df %>% mutate(mean_X=NA,mean_Y=NA,time=before_cor),
-#   #Step 2: Add x-lines
-#   df %>% mutate(mean_Y=NA,time='2. Figure out what differences in X are explained by W'),
-#   #Step 3: X de-meaned 
-#   df %>% mutate(X = X - mean_X,mean_X=0,mean_Y=NA,time="3. Remove differences in X explained by W"),
-#   #Step 4: Remove X lines, add Y
-#   df %>% mutate(X = X - mean_X,mean_X=NA,time="4. Figure out what differences in Y are explained by W"),
-#   #Step 5: Y de-meaned
-#   df %>% mutate(X = X - mean_X,Y = Y - mean_Y,mean_X=NA,mean_Y=0,time="5. Remove differences in Y explained by W"),
-#   #Step 6: Raw demeaned data only
-#   df %>% mutate(X = X - mean_X,Y = Y - mean_Y,mean_X=NA,mean_Y=NA,time=after_cor))
-# 
-# p <- ggplot(dffull,aes(y=Y,x=X,color=as.factor(W)))+geom_point()+
-#   geom_vline(aes(xintercept=mean_X,color=as.factor(W)))+
-#   geom_hline(aes(yintercept=mean_Y,color=as.factor(W)))+
-#   guides(color=guide_legend(title="W"))+
-#   scale_color_manual(values = c("darkslategrey", red_pink)) +
-#   labs(title = 'The Relationship between Y and X, Controlling for a Binary Variable W \n{next_state}')+
-#   transition_states(time,transition_length=c(12,32,12,32,12,12),state_length=c(160,100,75,100,75,160),wrap=FALSE)+
-#   ease_aes('sine-in-out')+
-#   exit_fade()+enter_fade() +
-#   theme_gif
-# 
-# anim_save(
-#   animation = p,
-#   filename = "control.gif",
-#   path = dir_slides,
-#   width = 10.5,
-#   height = 7,
-#   units = "in",
-#   res = 150,
-#   nframes = 200
-# )
-```
-
-.center[![Control](control.gif)]
-
----
-# Controlling for Confounders
-
-```{r}
-lm(Y ~ X, data = df) %>% tidy()
-```
-
---
-
-```{r}
-lm(Y ~ X + W, data = df) %>% tidy()
 ```
 
 ---
@@ -254,7 +92,7 @@ $$\color{#e64173}{Y_i} = \beta_0 + \beta_1 \color{#9370DB}{X_{1i}} + \beta_2 \co
 ---
 # Multiple Linear Regression
 
-```{R, echo = F, dev = "svg"}
+```{R, echo = F}
 # Colors (order: x1, x2, x3, y)
 venn_colors <- c(purple, red, "grey60", orange)
 # Locations of circles
@@ -346,7 +184,7 @@ Model 2 will yield a lower $R^2$ than Model 1.
 ---
 # Goodness of Fit 
 
-```{R, echo = F, dev = "svg"}
+```{R, echo = F}
 # Colors (order: x1, x2, x3, y)
 venn_colors <- c(purple, orange)
 # Locations of circles
@@ -378,7 +216,7 @@ coord_equal()
 ---
 # Goodness of Fit 
 
-```{R, echo = F, dev = "svg"}
+```{R, echo = F}
 # Colors (order: x1, x2, x3, y)
 venn_colors <- c(purple, red, orange)
 # Locations of circles
@@ -407,101 +245,6 @@ ylim(-4, 3.4) +
 coord_equal()
 ```
 
----
-# Goodness of Fit
-
-**Problem:** As we add variables to our model, $R^2$ *mechanically* increases.
-
---
-
-To see this problem, we can simulate a dataset of 10,000 observations on $y$ and 1,000 random $x_k$ variables. **No relations between $y$ and the $x_k$!**
-
-Pseudo-code outline of the simulation:
---
-
-.pseudocode-small[
-
-- Generate 10,000 observations on $y$
-- Generate 10,000 observations on variables $x_1$ through $x_{1000}$
-- Regressions
-  - LM<sub>1</sub>: Regress $y$ on $x_1$; record R<sup>2</sup>
-  - LM<sub>2</sub>: Regress $y$ on $x_1$ and $x_2$; record R<sup>2</sup>
-  - ...
-  - LM<sub>1000</sub>: Regress $y$ on $x_1$, $x_2$, ..., $x_{1000}$; record R<sup>2</sup>
-]
-
----
-# Goodness of Fit
-
-**Problem:** As we add variables to our model, $R^2$ *mechanically* increases.
-
-.mono[R] code for the simulation:
-
-```{R, r2 data code, eval = F, cache = T}
-set.seed(1234)
-plan(multiprocess)
-y <- rnorm(1e4)
-x <- matrix(data = rnorm(1e7), nrow = 1e4)
-x %<>% cbind(matrix(data = 1, nrow = 1e4, ncol = 1), x)
-r_fun <- function(i) {
- tmp_reg <- lm(y ~ x[,1:(i + 1)]) %>% summary()
-                    data.frame(
-                    k = i + 1,
-                    r2 = tmp_reg$r.squared,
-                    r2_adj = tmp_reg$adj.r.squared)
-}
-r_df <- future_map(1:(1e3-1), r_fun) %>% bind_rows()
-```
-
----
-# Goodness of Fit
-
-**Problem:** As we add variables to our model, $\color{#314f4f}{R^2}$ *mechanically* increases.
-
-```{R, r2 data, include = F, cache = T}
-set.seed(1234)
-plan(multiprocess)
-y <- rnorm(1e4)
-x <- matrix(data = rnorm(1e7), nrow = 1e4)
-x %<>% cbind(matrix(data = 1, nrow = 1e4, ncol = 1), x)
-
-r_fun <- function(i) {
-  tmp_reg <- lm(y ~ x[,1:(i + 1)]) %>% summary()
-                     data.frame(
-                     k = i + 1,
-                     r2 = tmp_reg$r.squared,
-                     r2_adj = tmp_reg$adj.r.squared)
-}
-
-r_df <- future_map(1:(1e3-1), r_fun) %>% bind_rows()
-```
-
-```{R, r2 plot, echo = F, dev = "svg", fig.height = 6.25}
-ggplot(data = r_df, aes(x = k, y = r2)) +
-geom_hline(yintercept = 0) +
-geom_vline(xintercept = 0) +
-geom_line(size = 2, alpha = 0.75, color = "darkslategrey") +
-geom_line(aes(y = r2_adj), size = 0.2, alpha = 0, color = red_pink) +
-ylab(TeX("R^2")) +
-xlab("Number of explanatory variables (k)") +
-theme_pander(base_size = 18)
-```
-
----
-# Goodness of Fit
-
-**One solution:** .pink[Adjusted] $\color{#e64173}{R^2}$
-
-```{R, adjusted r2 plot, echo = F, dev = "svg", fig.height = 6.25}
-ggplot(data = r_df, aes(x = k, y = r2)) +
-geom_hline(yintercept = 0) +
-geom_vline(xintercept = 0) +
-geom_line(size = 2, alpha = 0.15, color = "darkslategrey") +
-geom_line(aes(y = r2_adj), size = 2, alpha = 0.85, color = red_pink) +
-ylab(TeX("R^2")) +
-xlab("Number of explanatory variables (k)") +
-theme_pander(base_size = 18)
-```
 
 ---
 # Goodness of Fit
@@ -579,7 +322,7 @@ There are tradeoffs to remember as we add/remove variables:
 ---
 # Omitted Variables
 
-```{R, venn2, dev = "svg", echo = F}
+```{R, venn2,  echo = F}
 # Line types (order: x1, x2, x3, y)
 venn_lines <- c("solid", "dotted", "solid")
 # Venn
@@ -603,7 +346,7 @@ coord_equal()
 ---
 # Omitted Variables
 
-```{R, echo = F, dev = "svg"}
+```{R, echo = F}
 # Colors (order: x1, x2, x3, y)
 venn_lines <- c("solid", "dotted", "solid")
 # Locations of circles

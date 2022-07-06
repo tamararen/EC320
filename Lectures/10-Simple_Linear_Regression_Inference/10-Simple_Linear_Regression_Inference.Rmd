@@ -52,6 +52,9 @@ campus <- get(data(campus)) %>%
          police = round(police/enroll*1000, 2)) %>% 
   filter(police < 10) %>% # remove outlier
   select(crime, police)
+
+library(pagedown)
+pagedown::chrome_print("10-Simple_Linear_Regression_Inference.html", output = "10-Simple_Linear_Regression_Inference.pdf")
 ```
 
 ---
