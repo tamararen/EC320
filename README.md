@@ -42,7 +42,7 @@ The HTML versions of the lecture slides allow you to view animations and interac
 
 
 11. **Multiple Linear Regression: Inference** <br> 
-
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/12-Multiple_Linear_Regression_Inference/12-Multiple_Linear_Regression_Inference.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/12-Multiple_Linear_Regression_Inference/12-Multiple_Linear_Regression_Inference.pdf)  
 
 
 ### Week 4
