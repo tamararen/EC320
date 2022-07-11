@@ -48,11 +48,14 @@ The HTML versions of the lecture slides allow you to view animations and interac
 ### Week 4
 
 12. **Categorical Variables** <br> 
+[.html](https://raw.githack.com/tamararen/EC320/master/Lectures/14-Categorical_Variables/14-Categorical_Variables.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/14-Categorical_Variables/14-Categorical_Variables.pdf)  
+
 
 13. **Interactive Relationships** <br> 
 
 14. **Nonlinear Relationships** <br> 
 
+14-Categorical_Variables
 
 ## Labs
 
