@@ -50,8 +50,9 @@ The HTML versions of the lecture slides allow you to view animations and interac
 12. **Categorical Variables** <br> 
 [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/14-Categorical_Variables/14-Categorical_Variables.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/14-Categorical_Variables/14-Categorical_Variables.pdf)  
 
+15-Interactive_Relationships.html
 
-13. **Interactive Relationships** <br> 
+13. **Interactive Relationships** <br> [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/15-Interactive_Relationships/15-Interactive_Relationships.html)|[.pdf](https://raw.githack.com/tamararen/EC320/master/Lectures/15-Interactive_Relationships/15-Interactive_Relationships.pdf)  
 
 14. **Nonlinear Relationships** <br> 
 
