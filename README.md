@@ -59,7 +59,6 @@ The HTML versions of the lecture slides allow you to view animations and interac
 15. **Final Review** <br> 
 [.html](https://raw.githack.com/tamararen/EC320/master/Lectures/17-Final_Review/17-Final_Review.html)|
 
-16-Nonlinear_Relationships
 ## Labs
 
 1. Lab 1 [.html](https://raw.githack.com/tamararen/EC320/master/Lab/Lab1/lab1_markdown.html) | [.RMD](https://raw.githack.com/tamararen/EC320/master/Lab/Lab1/lab1_markdown.Rmd) <br>  
