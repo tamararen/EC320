@@ -2,7 +2,7 @@
 title: "Final Review"
 subtitle: "EC 320: Introduction to Econometrics"
 author: "Tami Ren"
-date: "Fall 2019"
+date: "Fall 2022"
 output:
   xaringan::moon_reader:
     css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
